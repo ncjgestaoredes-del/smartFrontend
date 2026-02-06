@@ -163,30 +163,30 @@ const App: React.FC = () => {
             user={currentUser} 
             onLogout={() => setCurrentUser(null)}
             users={users}
-            onUsersChange={(u) => { setUsers(u); saveSchoolData('users', u); }}
+            onUsersChange={(u: User[]) => { setUsers(u); saveSchoolData('users', u); }}
             students={students}
-            onStudentsChange={(s) => { setStudents(s); saveSchoolData('students', s); }}
+            onStudentsChange={(s: Student[]) => { setStudents(s); saveSchoolData('students', s); }}
             onResetApp={() => alert("Função desativada em modo MySQL. Use o DB Admin.")}
             onClearStudents={() => { if(window.confirm("Limpar?")) { setStudents([]); saveSchoolData('students', []); } }}
             academicYears={academicYears}
-            onAcademicYearsChange={(y) => { setAcademicYears(y); saveSchoolData('academic_years', y); }}
+            onAcademicYearsChange={(y: AcademicYear[]) => { setAcademicYears(y); saveSchoolData('academic_years', y); }}
             schoolSettings={schoolSettings}
-            onSchoolSettingsChange={(s) => { setSchoolSettings(s); saveSchoolData('settings', s); }}
+            onSchoolSettingsChange={(s: SchoolSettings) => { setSchoolSettings(s); saveSchoolData('settings', s); }}
             financialSettings={financialSettings}
-            onFinancialSettingsChange={(f) => { setFinancialSettings(f); saveSchoolData('financial', f); }}
+            onFinancialSettingsChange={(f: FinancialSettings) => { setFinancialSettings(f); saveSchoolData('financial', f); }}
             turmas={turmas}
-            onTurmasChange={(t) => { setTurmas(t); saveSchoolData('turmas', t); }}
+            onTurmasChange={(t: Turma[]) => { setTurmas(t); saveSchoolData('turmas', t); }}
             expenses={expenses}
-            onExpensesChange={(e) => { setExpenses(e); saveSchoolData('expenses', e); }}
+            onExpensesChange={(e: ExpenseRecord[]) => { setExpenses(e); saveSchoolData('expenses', e); }}
             topics={topics}
-            onTopicsChange={(t) => { setTopics(t); saveSchoolData('topics', t); }}
+            onTopicsChange={(t: DiscussionTopic[]) => { setTopics(t); saveSchoolData('topics', t); }}
             messages={messages}
-            onMessagesChange={(m) => { setMessages(m); saveSchoolData('messages', m); }}
+            onMessagesChange={(m: DiscussionMessage[]) => { setMessages(m); saveSchoolData('messages', m); }}
             notifications={notifications}
-            onAddNotifications={(n) => { const upd = [...n, ...notifications]; setNotifications(upd); saveSchoolData('notifications', upd); }}
-            onMarkNotificationAsRead={(id) => { const upd = notifications.map(n => n.id === id ? { ...n, read: true } : n); setNotifications(upd); saveSchoolData('notifications', upd); }}
+            onAddNotifications={(n: AppNotification[]) => { const upd = [...n, ...notifications]; setNotifications(upd); saveSchoolData('notifications', upd); }}
+            onMarkNotificationAsRead={(id: string) => { const upd = notifications.map(n => n.id === id ? { ...n, read: true } : n); setNotifications(upd); saveSchoolData('notifications', upd); }}
             requests={requests}
-            onRequestsChange={(r) => { setRequests(r); saveSchoolData('requests', r); }}
+            onRequestsChange={(r: SchoolRequest[]) => { setRequests(r); saveSchoolData('requests', r); }}
         />
       )}
     </>
